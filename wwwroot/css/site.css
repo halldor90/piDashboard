@@ -1,0 +1,278 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  font-family: Poiret One;
+  background-color: #34A8CE;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.daySummary {
+  position: absolute;
+  float: left;
+  width: 20%;
+}
+
+.date-time{
+  width:300px;
+}
+
+#clock
+{
+	margin:5px;
+	font-size:70px;
+	color: black;
+	width:300px;
+}
+
+#day
+{
+	margin:5px;
+	color:black;
+	font-size:25px;
+	width:300px;
+}
+
+.calendar_events{
+  padding: 10px;
+  width:300px;
+}
+.ce_title{
+  font-size:16px;
+}
+
+.event_item{
+  margin: 18px 0;
+  padding:5px;
+  cursor: pointer;
+  width: 300px;
+  border-radius: 20px;
+}
+
+.ei_Summary{
+  display:inline-block;
+  margin-left:10px;
+  color:#363b41;
+  font-weight: bold;
+}
+
+.ei_Time{
+  font-size:12px;
+  margin-left:27px;
+  font-weight: bold;
+}
+
+/* DarkSky */
+
+.weather {
+  position: relative;
+  float: right;
+  width: 70%;
+  margin: 10px;
+}
+
+.widget {
+  display: flex;
+  height: 200px;
+  width: 350px;
+  flex-wrap: wrap;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.weatherInfo{
+  flex: 1 100%;
+  height: 60%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: #FAFAFA;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 100px;
+}
+  
+.currentday{
+  width: 80%;
+}
+  
+.weatherIcon{
+  flex: 0 0 70%;
+  height: 40%;
+  background: #080705;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.temperature{
+  flex: 0 0 40%;
+  width: 100%;
+  font-size: 45px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.description{
+  flex: 0 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 100;
+  padding-left: 10px;
+}
+
+.place{
+  font-size: 15px;
+}
+
+.date{
+  flex: 0 0 30%;
+  height: 40%;
+  background-color: white;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 800;
+  font-family: weathericons;
+}
+
+/* Next hours/days */
+
+.hours-head
+{
+  width: 425px;
+}
+
+.days-head
+{
+  width: 425px;
+}
+
+.grid-container {
+  width: 425px;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+}
+
+.grid-container-days {
+  width: 425px;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+}
+
+.grid-item {
+  width: 150px;
+  margin: 5px;
+  background-color: black;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.icon{
+  flex: 0 0 30%;
+  height: 25%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 800;
+  font-family: weathericons;
+}
+
+header {
+  margin: 20px 0;
+  background-color: #34A8CE;
+}
+
+header h1 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.status {
+  margin: 5px;
+  /* margin-bottom: 5px; */
+  color: white;
+  text-align: center;
+}
