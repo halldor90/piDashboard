@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-piDash-06B29DF6-958C-452F-BB9B-E3C6158AA462</UserSecretsId>
-    <!-- <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel> -->
   </PropertyGroup>
 
 
@@ -15,9 +14,6 @@
     <PackageReference Include="DarkSkyCore" Version="6.0.0" />
     <PackageReference Include="Google.Apis.Calendar.v3" Version="1.41.1.1741" />
     <PackageReference Include="Humanizer" Version="2.7.9" />
-    <!-- <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" /> -->
     <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />

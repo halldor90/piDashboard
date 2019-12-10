@@ -40,16 +40,12 @@ namespace piDash
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
-                // .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            //services.AddControllersWithViews();
 
             services.AddSingleton<ICalenderService, CalenderService>();
 
             services.AddSingleton<IWeatherService, WeatherService>();
 
-            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddRazorPages();
         }
 
@@ -75,14 +71,6 @@ namespace piDash
             app.UseRouting();
 
             app.UseAuthentication();
-
-            // app.UseMvc(routes =>
-            // {
-            //     routes.MapRoute(
-            //         name: "default",
-            //         template: "{controller=Home}/{action=Index}/{id?}");
-            // });
-
             
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
