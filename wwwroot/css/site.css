@@ -161,7 +161,8 @@ body {
 .temperature{
   flex: 0 0 40%;
   width: 100%;
-  font-size: 45px;
+  padding: 5%;
+  font-size: 25%;
   display: flex;
   justify-content: space-around;
 }
@@ -180,7 +181,8 @@ body {
 }
 
 .place{
-  font-size: 15px;
+  font-size: 90%;
+  margin-bottom: 15px;
 }
 
 .date{
