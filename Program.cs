@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 
 
-namespace piDash
+namespace DayDash
 {
     public class Program
     {

@@ -1,89 +1,68 @@
 @model dynamic
+@using Humanizer
 
 @{
     ViewData["Title"] = "What's happening?";
 }
 
-
-<section class="daySummary">
-    <div class="date-time">
-        <p><span id="clock">&nbsp;</span></p>
-        <p><span id="day">&nbsp;</span></p>
+<header class="DateTime">
+        <h1 id="time">&nbsp;</h1>
+        <h1 id="date">&nbsp;</h1>
+</header>
+<section class="weather">
+    <div class="currentForecast">
+        <h2>
+        @(Model.Forecast.CurrentTemperature)&deg; - 
+        @(Model.Forecast.CurrentSummary)
+        </h2>
+        <img src="@Url.Content(Model.Forecast.CurrentIconPath)"/>    
+        <h3>Feels like: @(Model.Forecast.CurrentFeelsLikeTemperature)&deg;</h3>
+        <h3>@(Model.Forecast.MinutelySummary)</h3> 
+        <p>
+        <strong>Low:</strong>  @(Model.Forecast.Day[0].TempLow)
+        <strong>High:</strong>  @(Model.Forecast.Day[0].TempHigh)
+        </p> 
     </div>
-    <div class="calendar_events">
-        <p class="ce_title">Upcoming Events</p>
-        @foreach (var item in Model.Events)
+    <div class="grid-container">
+        @foreach (var hour in Model.Forecast.Hour)
         {
-            <div class="event_item" style="background-color:@item.ColorId">
-                <div class="ei_Summary">@item.Summary</div>
-                <div class="ei_Time">@item.StartsAt</div>
+            <div class="grid-item">
+                <div>@(hour.Time)</div>
+                <img src="@hour.Icon" alt="Hour Icon" />                
+                <div>@(hour.Temp)&deg;</div>
+                <div>@(hour.Summary)</div>
+            </div>
+        }
+        @for (int i = 1; i < Model.Forecast.Day.Count; i++)
+        {
+            <div class="grid-item">
+                <div>@(Model.Forecast.Day[i].Day)</div>
+                <img src="@Model.Forecast.Day[i].Icon" alt="Day Icon"/>
+                <div>@(Model.Forecast.Day[i].Temp)&deg;</div>
+                <div>@(Model.Forecast.Day[i].Summary)</div>
             </div>
         }
     </div>
 </section>
-
-<section class="weather">        
-    <div class="widget">
-        <div class="weatherInfo">
-            <i class="current-day">
-                <div class="temperature">
-                    <div>@Model.Forecast.CurrentTemperature</div>
-                    <div>°&nbsp </div>   
-                    <div>@Model.Forecast.CurrentSummary</div>
-                </div>
-                <div class="description">                           
-                    <div class="place">
-                        <div><strong>Feels like:</strong> @Model.Forecast.CurrentFeelsLikeTemperature</div> 
-                        <!-- <strong>Low:</strong>  @Model.Forecast.CurrentTempLow
-                        <strong>High:</strong>  @Model.Forecast.CurrentTempHigh</p> -->
-                    </div>
-                </div>
-            </i>
-        </div>
-        <div class="weatherIcon">                
-            <div class="description">    
-                @Model.Forecast.MinutelySummary
-            </div>                
-        </div>
-        <div class="date">
-            <img src="@Url.Content(Model.Forecast.CurrentIconPath)"/>
-        </div>
+<section class="busSchedule">
+    <h2 onclick="refreshPage()">Bus Schedule</h2>
+    <div class="busTime">        
+        @foreach (var item in Model.Buses)
+        {
+            <h5>@(item.BusName) - @(item.Time)</h5>
+        }
     </div>        
-
-    <header class="hours-head">
-        <h1>Next hours</h1>
-    </header>
-    <ul class="grid-container">
-        @foreach (var hour in Model.Forecast.Hour)
-        {
-            <li class="grid-item">
-                <div class="icon">
-                    <img src="@hour.icon" alt="" />
-                </div>
-                <div class="status">
-                    <div>@hour.time</div>
-                    <div>@hour.temp°</div>
-                    <div>@hour.summary</div>
-                </div>
-            </li>
-        }
-    </ul>   
-    <header class="days-head">
-        <h1>Next days</h1>
-    </header>
-    <ul class="grid-container-days">
-        @foreach (var day in Model.Forecast.Day)
-        {
-            <li class="grid-item">
-                <div class="icon">
-                    <img src="@day.icon" alt="" />
-                </div>
-                <div class="status">
-                    <div>@day.day</div>
-                    <div>@day.temp°</div>
-                    <div>@day.summary</div>
-                </div>
-            </li>
-        }
-    </ul>
+</section>
+<section class="calendar-events">
+    <h2>Upcoming events</h2>
+    @foreach (var item in Model.Events)
+    {            
+        <section class="event">
+            @if(item.isSameDate == false)
+            {
+                <p><strong>@(item.Date)</strong></p>
+            }                
+            <p><em>@(item.Time) - @(item.Summary)</em></p>
+        </section>
+    }
 </section>

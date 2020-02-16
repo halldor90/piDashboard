@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using piDash.Models;
+using Microsoft.Extensions.Options;
+using DayDash.Models;
 
-namespace piDash.Services
+namespace DayDash.Services
 {
     public interface IWeatherService
     {
-        Task<WeatherItem> GetForecastAsync();
+        Task<WeatherItem> GetForecastAsync(IOptions<AppSettings> appSettings);
     }
 }

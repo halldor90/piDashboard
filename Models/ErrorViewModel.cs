@@ -1,6 +1,6 @@
 using System;
 
-namespace piDash.Models
+namespace DayDash.Models
 {
     public class ErrorViewModel
     {

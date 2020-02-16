@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using piDash.Models;
+using DayDash.Models;
 
-namespace piDash.Services
+namespace DayDash.Services
 {
     public interface ICalenderService
     {

@@ -42,10 +42,10 @@ function updateDay() {
     var currentMonth = currentTime.getMonth();
     var currentYear = currentTime.getFullYear();
 
-    var Months = ["Janúar", "Febrúar", "Mars", "Apríl", "Maí", "Júní", "Júlí", "Ágúst", "September", "Október", "Nóvember", "Desember"];
+    var Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // Compose the string for display
-    var currentDayString = currentDay + "." + Months[currentMonth] + " " + currentYear;
+    var currentDayString = currentDay + ". " + Months[currentMonth] + " " + currentYear;
 
     return currentDayString;
 }

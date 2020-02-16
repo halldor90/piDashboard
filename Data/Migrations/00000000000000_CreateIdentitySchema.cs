@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace piDash.Data.Migrations
+namespace DayDash.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using piDash.Data;
+using DayDash.Data;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using piDash.Services;
+using DayDash.Services;
 
-namespace piDash
+namespace DayDash
 {
     public class Startup
     {
@@ -42,9 +42,11 @@ namespace piDash
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddSingleton<ICalenderService, CalenderService>();
+            services.Configure<AppSettings>(Configuration);
 
+            services.AddSingleton<ICalenderService, CalenderService>();
             services.AddSingleton<IWeatherService, WeatherService>();
+            services.AddSingleton<IBusService, BusService>();
 
             services.AddRazorPages();
         }

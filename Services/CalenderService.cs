@@ -2,20 +2,17 @@ using System;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using piDash.Data;
-using piDash.Models;
-using Microsoft.EntityFrameworkCore;
+using DayDash.Models;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 
-namespace piDash.Services
+namespace DayDash.Services
 {
     public class CalenderService : ICalenderService
     {
@@ -26,7 +23,7 @@ namespace piDash.Services
             UserCredential credential;
 
             using (var stream =
-                new FileStream("credentialsCalendar.json", FileMode.Open, FileAccess.Read))
+                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
@@ -51,6 +48,8 @@ namespace piDash.Services
             var calendarList = service.CalendarList.List().Execute();
             IList<CalendarListEntry> calItems = calendarList.Items;
 
+            List<Events> allEvents = new List<Events>();
+
             if (calItems.Count > 0)
             {
                 foreach (var calItem in calItems)
@@ -66,7 +65,7 @@ namespace piDash.Services
                     Events events = request.Execute();
 
                     if (events.Items != null && events.Items.Count > 0)
-                    {                
+                    {       
                         foreach (var eventItem in events.Items)
                         {               
                             if (eventItem.Start.DateTime <= DateTime.Today.AddDays(3))
@@ -74,22 +73,53 @@ namespace piDash.Services
                                 CalenderItem calenderItem = new CalenderItem();     
                                 calenderItem.Summary = eventItem.Summary;
                                 calenderItem.ColorId = calItem.BackgroundColor;
+                                
                                 string when = eventItem.Start.DateTime.ToString();
+                                
                                 if (String.IsNullOrEmpty(when))
                                 {
                                     when = eventItem.Start.Date;
                                 }
-                                calenderItem.StartsAt = DateTime.ParseExact(when, "dd/MM/yyyy HH:mm:ss", new CultureInfo("en-GB")).ToString("dddd, dd MMMM yyyy HH:mm");
-                                calenderItems.Add(calenderItem);
+                                
+                                if (eventItem.Start.DateTime?.Date == DateTime.Today.Date || DateTime.ParseExact(when, "dd/MM/yyyy HH:mm:ss", new CultureInfo("en-GB")) == DateTime.Today.Date)
+                                {
+                                    calenderItem.Date = "Today";
+                                }
+                                else if (eventItem.Start.DateTime?.Date == DateTime.Today.AddDays(1).Date || DateTime.ParseExact(when, "dd/MM/yyyy HH:mm:ss", new CultureInfo("en-GB")) == DateTime.Today.AddDays(1).Date)
+                                {
+                                    calenderItem.Date = "Tomorrow";
+                                }
+                                else
+                                {
+                                    calenderItem.Date = DateTime.ParseExact(when, "dd/MM/yyyy HH:mm:ss", new CultureInfo("en-GB")).ToString("dd MMMM");
+                                }
 
+                                calenderItem.Time = DateTime.ParseExact(when, "dd/MM/yyyy HH:mm:ss", new CultureInfo("en-GB")).ToString("HH:mm");
+
+                                calenderItem.DateTime = DateTime.ParseExact(when, "dd/MM/yyyy HH:mm:ss", new CultureInfo("en-GB")).ToString("dd MMMM HH:mm");
+                                
+                                if (calenderItems.Count > 0 && calenderItems.Last().Date == calenderItem.Date)
+                                {
+                                    calenderItem.isSameDate = true;
+                                }
+
+                                calenderItems.Add(calenderItem);                              
                             }                    
                         }           
                     }                    
                 }
             }
-            
-            calenderItems = calenderItems.OrderBy(x => DateTime.ParseExact(x.StartsAt, "dddd, dd MMMM yyyy HH:mm",new CultureInfo("en-GB"))).ToList();
 
+            calenderItems = calenderItems.OrderBy(c => c.DateTime).ToList();
+
+            for (int i = 1; i < calenderItems.Count; i++)
+            {
+                if (calenderItems[i - 1].Date == calenderItems[i].Date)
+                {
+                    calenderItems[i].isSameDate = true;
+                }
+            }
+            
             return Task.FromResult(calenderItems);
         } 
     }

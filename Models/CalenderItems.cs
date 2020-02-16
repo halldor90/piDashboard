@@ -1,15 +1,13 @@
-using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace piDash.Models
+namespace DayDash.Models
 {
     public class CalenderItem
     {
-        [Required]
         public string Summary { get; set; }
-        
-        public string StartsAt { get; set; }
-
+        public string DateTime { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public bool isSameDate { get; set; }
         public string ColorId { get; set; }
     }
 

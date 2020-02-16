@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using DarkSky.Models;
 
-namespace piDash.Models
+namespace DayDash.Models
 {
     public class WeatherItem
     {
@@ -16,10 +15,6 @@ namespace piDash.Models
 
         public int CurrentFeelsLikeTemperature { get; set; }
 
-        public int CurrentTempLow { get; set; }
-
-        public int CurrentTempHigh { get; set; }
-
         public string MinutelySummary { get; set; }
 
         public List<HourData> Hour { get; set; }
@@ -31,23 +26,27 @@ namespace piDash.Models
 
     public class HourData
     {
-        public string time;
+        public string Time;
 
-        public int temp;
+        public int Temp;
 
-        public string summary;
+        public string Summary;
 
-        public string icon;
+        public string Icon;
     }
 
     public class DayData
     {
-        public string day;
+        public string Day;
 
-        public int temp;
+        public int Temp;
 
-        public string summary;
+        public int TempLow { get; set; }
 
-        public string icon;
+        public int TempHigh { get; set; }
+
+        public string Summary;
+
+        public string Icon;
     }
 }
