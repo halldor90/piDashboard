@@ -55,6 +55,10 @@ git clone https://github.com/halldorstefans/DayDashboard.git
     "DarkSkyAPIKey":"ENTER YOUR DARK SKY API KEY"
 }
 ```
+7. Set your latitude and longitude on line 21 in WeatherService.cs
+```dotnet
+var forecast = await darkSky.GetForecast("YOUR LATITUDE", "YOUR LONGITUDE",
+```
 
 <!-- LICENSE -->
 ## License

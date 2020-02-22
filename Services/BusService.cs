@@ -24,7 +24,10 @@ namespace DayDash.Services
 
             List<Bus> buses = busRequest.BusLines.m1;
 
-            buses.AddRange(busRequest.BusLines.m3);
+            if (busRequest.BusLines.m3.Any())
+            {
+                buses.AddRange(busRequest.BusLines.m3);
+            }
 
             buses = buses.GroupBy(x => new {x.Time, x.BusName}).Select(x => x.First()).OrderBy(b => b.Time).ToList();
 
