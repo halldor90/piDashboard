@@ -14,7 +14,7 @@
 <!-- ABOUT THE PROJECT -->
 ## DayDash
 
-[![Product Name Screen Shot](wwwroot/images/DayDashboard.png)](https://github.com/halldorstefans/DayDashboard)
+[![Product Name Screen Shot](src/wwwroot/images/DayDashboard.png)](https://github.com/halldorstefans/DayDashboard)
 
 Web application to display upcoming calendar events, bus schedule and weather forecast
 
