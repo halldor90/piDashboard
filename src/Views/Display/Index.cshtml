@@ -1,0 +1,80 @@
+@model dynamic
+@using Humanizer
+@using System.Linq
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "What's happening?";
+    TextInfo textInfo = new CultureInfo("en-GB", false).TextInfo;
+}
+
+<header class="DateTime">
+        <h1 id="time">&nbsp;</h1>
+        <h1 id="date">&nbsp;</h1>
+</header>
+<section class="weather">
+    <div class="currentForecast">
+        <h2>
+        @((int)Model.Forecast.Current.CurrentTemperature)&deg; - 
+        @(textInfo.ToTitleCase(Model.Forecast.Current.CurrentWeather[0].Summary))
+        </h2>
+        <img src='@Url.Content("images/" + Model.Forecast.Current.CurrentWeather[0].Icon + ".svg")' alt="@Model.Forecast.Current.CurrentWeather[0].Icon"/>      
+        <h3>Feels like: @((int)Model.Forecast.Current.CurrentFeelsLikeTemperature)&deg;</h3>
+        <p>
+        <strong>Low:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempLow)
+        <strong>High:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempHigh)
+        </p>   
+    </div>
+    <div class="grid-container">
+        @for (int i = 2; i < 5; i++)
+        {
+            <div class="grid-item">
+                <div>@(DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(Model.Forecast.Hour[i].Time)).LocalDateTime.ToShortTimeString())</div>
+                <img src='@Url.Content("images/" + Model.Forecast.Hour[i].HourWeather[0].Icon + ".svg")' alt="@Model.Forecast.Hour[i].HourWeather[0].Icon" />                
+                <div>@((int)Model.Forecast.Hour[i].Temp)&deg;</div>
+                <div>@(textInfo.ToTitleCase(Model.Forecast.Hour[i].HourWeather[0].Summary))</div>
+            </div>
+        }
+        @for (int i = 1; i < 4; i++)
+        {
+            <div class="grid-item">
+                @if (DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(Model.Forecast.Day[i].Day)).LocalDateTime.ToShortDateString() == DateTime.Now.AddDays(1).ToShortDateString())
+                {
+                    <div>Tomorrow</div>
+                }
+                else
+                {
+                    <div>@(DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(Model.Forecast.Day[i].Day)).LocalDateTime.ToString("dddd, dd MMMM yyyy"))</div>
+                }                                
+                <img src='@Url.Content("images/" + Model.Forecast.Day[i].DayWeather[0].Icon + ".svg")' alt="@Model.Forecast.Day[i].DayWeather[0].Icon"/>
+                <div>@((int)Model.Forecast.Day[i].DayTemp.Temp)&deg;</div>
+                <div>@(textInfo.ToTitleCase(Model.Forecast.Day[i].DayWeather[0].Summary))</div>
+            </div>
+        }
+    </div>
+</section>
+<section class="busSchedule">
+    <h2 onclick="refreshPage()">Bus Schedule</h2>
+    <div class="busTime">        
+        @if (Model.Buses.Count > 0)
+        {
+            @foreach (var item in Model.Buses)
+            {
+                <h5>@(item.BusName) - @(item.EstimatedDepartureTime)</h5>
+            }
+        }
+    </div>        
+</section>
+<section class="calendar-events">
+    <h2>Upcoming events</h2>
+     @foreach (var item in Model.Events)
+    {            
+        <section class="event">
+            @if(item.IsSameDate == false)
+            {
+                <p><strong>@(item.Date)</strong></p>
+            }                
+            <p><em>@(item.Time) - @(item.Summary)</em></p>
+        </section>
+    } 
+</section>

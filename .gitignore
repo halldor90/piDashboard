@@ -13,6 +13,8 @@
 *token*
 *credentials*
 *Development*
+*ignore*
+*.db
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

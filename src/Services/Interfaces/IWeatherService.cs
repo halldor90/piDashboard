@@ -6,6 +6,6 @@ namespace DayDash.Services
 {
     public interface IWeatherService
     {
-        Task<WeatherItem> GetForecastAsync(IOptions<AppSettings> appSettings);
+        Task<WeatherForecast> GetForecastAsync(IOptions<AppSettings> appSettings);
     }
 }

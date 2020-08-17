@@ -4,8 +4,8 @@ using DayDash.Models;
 
 namespace DayDash.Services
 {
-    public interface ICalenderService
+    public interface ICalendarService
     {
-        Task<List<CalenderItem>> GetCalenderItemsAsync();
+        Task<List<CalendarItem>> GetCalendarItemsAsync();
     }
 }

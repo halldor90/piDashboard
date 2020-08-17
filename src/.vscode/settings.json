@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a4fbdffb-8355-477c-b8b9-dab72e2e21f3/resourceGroups/DayDash/providers/Microsoft.Web/sites/DayDashApp",
+    "appService.deploySubpath": "bin/Release/netcoreapp3.1/publish"
+}

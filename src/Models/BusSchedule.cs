@@ -25,8 +25,8 @@ namespace DayDash.Models
         [JsonProperty("line_name")]
         public string BusName { get; set; }
 
-        [JsonProperty("aimed_departure_time")]
-        public string Time { get; set; }  
+        [JsonProperty("best_departure_estimate")]
+        public string EstimatedDepartureTime { get; set; }  
  
     }
 }
