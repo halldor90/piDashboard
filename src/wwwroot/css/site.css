@@ -11,6 +11,10 @@ a.navbar-brand {
 
 
 /*Global styles*/
+html, body {
+  overflow: auto;
+}
+
 body {
   font: 100% "Work Sans", Helvetica, sans-serif;
   background-color: #fafafa;
@@ -19,13 +23,13 @@ body {
   padding: 0;
 }
 
-main {
-  margin-top: 2rem;
+.main {
+  margin-top: 0;
 }
 
 .DateTime {
-  padding: 34px;
-  margin: 2rem;
+  padding: 10px;
+  margin: 1rem;
 }
 
 .DateTime h1:first-of-type {
@@ -37,7 +41,7 @@ main {
 }
 
 .weather {
-  width: 70%;
+  width: 60%;
   display: block;
   float: left;
   padding: 1rem;
@@ -48,6 +52,15 @@ main {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+.currentForecast .tempRange {
+  display: flex;
+  align-items:center;
+}
+
+.currentForecast h2, p {
+  margin: 0;
 }
 
 .grid-container {
@@ -61,12 +74,12 @@ main {
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .busSchedule {
   display: inline-block;
-  width: 30%;
+  width: 40%;
   padding: 1rem;
   margin-top: 1rem;
   margin-bottom: 10px;
@@ -76,7 +89,7 @@ main {
 
 .calendar-events {
   display: inline-block;
-  width: 30%;
+  width: 40%;
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;

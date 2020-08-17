@@ -18,12 +18,14 @@
         @((int)Model.Forecast.Current.CurrentTemperature)&deg; - 
         @(textInfo.ToTitleCase(Model.Forecast.Current.CurrentWeather[0].Summary))
         </h2>
-        <img src='@Url.Content("images/" + Model.Forecast.Current.CurrentWeather[0].Icon + ".svg")' alt="@Model.Forecast.Current.CurrentWeather[0].Icon"/>      
-        <h3>Feels like: @((int)Model.Forecast.Current.CurrentFeelsLikeTemperature)&deg;</h3>
         <p>
-        <strong>Low:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempLow)
-        <strong>High:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempHigh)
-        </p>   
+            <strong>Low:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempLow)
+            <strong>High:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempHigh)
+        </p>
+        <div class="tempRange">
+            <img src='@Url.Content("images/" + Model.Forecast.Current.CurrentWeather[0].Icon + ".svg")' alt="@Model.Forecast.Current.CurrentWeather[0].Icon"/>
+            <h3>Feels like: @((int)Model.Forecast.Current.CurrentFeelsLikeTemperature)&deg;</h3>
+        </div>  
     </div>
     <div class="grid-container">
         @for (int i = 2; i < 5; i++)
@@ -44,7 +46,7 @@
                 }
                 else
                 {
-                    <div>@(DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(Model.Forecast.Day[i].Day)).LocalDateTime.ToString("dddd, dd MMMM yyyy"))</div>
+                    <div>@(DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(Model.Forecast.Day[i].Day)).LocalDateTime.ToString("dddd"))</div>
                 }                                
                 <img src='@Url.Content("images/" + Model.Forecast.Day[i].DayWeather[0].Icon + ".svg")' alt="@Model.Forecast.Day[i].DayWeather[0].Icon"/>
                 <div>@((int)Model.Forecast.Day[i].DayTemp.Temp)&deg;</div>
