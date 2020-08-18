@@ -1,9 +1,9 @@
+using DayDash.Models;
+using DayDash.Services;
 using System.Dynamic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DayDash.Services;
 using Microsoft.Extensions.Options;
-using DayDash.Models;
 
 namespace DayDash.Controllers
 {
@@ -30,7 +30,6 @@ namespace DayDash.Controllers
 
             dynamic model = new ExpandoObject();
             model.Events = events;
-            //model.Events = null;
             model.Forecast = forecast;
             model.Buses = buses;
 

@@ -18,14 +18,14 @@
         @((int)Model.Forecast.Current.CurrentTemperature)&deg; - 
         @(textInfo.ToTitleCase(Model.Forecast.Current.CurrentWeather[0].Summary))
         </h2>
-        <p>
-            <strong>Low:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempLow)
-            <strong>High:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempHigh)
-        </p>
         <div class="tempRange">
             <img src='@Url.Content("images/" + Model.Forecast.Current.CurrentWeather[0].Icon + ".svg")' alt="@Model.Forecast.Current.CurrentWeather[0].Icon"/>
             <h3>Feels like: @((int)Model.Forecast.Current.CurrentFeelsLikeTemperature)&deg;</h3>
         </div>  
+        <p>
+            <strong>Low:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempLow)
+            <strong>High:</strong>  @((int)Model.Forecast.Day[0].DayTemp.TempHigh)
+        </p>
     </div>
     <div class="grid-container">
         @for (int i = 2; i < 5; i++)

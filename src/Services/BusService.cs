@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DayDash.Models;
 using System.Net.Http;
-using Newtonsoft.Json;
+using System.Text.Json;
 using Microsoft.Extensions.Options;
 
 namespace DayDash.Services
@@ -34,7 +34,7 @@ namespace DayDash.Services
             var response = await client.GetAsync(busUrl);
 
             var responseBody = response.Content.ReadAsStringAsync().Result;
-            var busResponse = JsonConvert.DeserializeObject<BusSchedule>(responseBody);
+            var busResponse = JsonSerializer.Deserialize<BusSchedule>(responseBody);
 
             return busResponse.BusLines;
         }

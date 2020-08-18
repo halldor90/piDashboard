@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 using DayDash.Models;
+using Microsoft.Extensions.Options;
+using System.Threading.Tasks;
 
 namespace DayDash.Services
 {

@@ -1,7 +1,7 @@
+using DayDash.Models;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using DayDash.Models;
 
 namespace DayDash.Services
 {

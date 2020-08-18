@@ -1,76 +1,74 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace DayDash.Models
 {
     public class WeatherForecast
     {
-        [JsonProperty("current")]
+        [JsonPropertyName("current")]
         public CurrentData Current { get; set; }
 
-        [JsonProperty("hourly")]
+        [JsonPropertyName("hourly")]
         public List<HourData> Hour { get; set; }
 
-        [JsonProperty("daily")]
+        [JsonPropertyName("daily")]
         public List<DayData> Day { get; set; }
     }
 
     public class CurrentData
     {    
-        [JsonProperty("temp")]
+        [JsonPropertyName("temp")]
         public double CurrentTemperature { get; set; }
 
-        [JsonProperty("feels_like")]
+        [JsonPropertyName("feels_like")]
         public double CurrentFeelsLikeTemperature { get; set; }
 
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public List<WeatherData> CurrentWeather { get; set; }
-
     }
 
     public class WeatherData
     {
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Summary { get; set; }
 
-        [JsonProperty("main")]
+        [JsonPropertyName("main")]
         public string Icon { get; set; }
     }
 
     public class HourData
     {
-        [JsonProperty("dt")]
-        public string Time;
+        [JsonPropertyName("dt")]
+        public int Time { get; set; }
 
-        [JsonProperty("temp")]
-        public double Temp;
+        [JsonPropertyName("temp")]
+        public double Temp { get; set; }
 
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public List<WeatherData> HourWeather { get; set; }
     }
 
     public class DayData
     {
-        [JsonProperty("dt")]
-        public string Day;
+        [JsonPropertyName("dt")]
+        public int Day { get; set; }
 
-        [JsonProperty("temp")]
-        public DayTempData DayTemp;
+        [JsonPropertyName("temp")]
+        public DayTempData DayTemp { get; set; }
 
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public List<WeatherData> DayWeather { get; set; }
     }
 
     public class DayTempData
     {
-        [JsonProperty("day")]
-        public double Temp;
+        [JsonPropertyName("day")]
+        public double Temp { get; set; }
 
-        [JsonProperty("min")]
+        [JsonPropertyName("min")]
         public double TempLow { get; set; }
 
-        [JsonProperty("max")]
+        [JsonPropertyName("max")]
         public double TempHigh { get; set; }
     }
 }

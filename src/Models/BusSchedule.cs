@@ -1,31 +1,31 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace DayDash.Models
 {
     public class BusSchedule
     { 
-        [JsonProperty("stop_name")]
+        [JsonPropertyName("stop_name")]
         public string StopName { get; set; }
         
-        [JsonProperty("departures")]
+        [JsonPropertyName("departures")]
         public BusLines BusLines { get; set; }
     }
 
     public class BusLines
     {
-        [JsonProperty("m1")]
+        [JsonPropertyName("m1")]
         public List<Bus> m1 { get; set; }
 
-        [JsonProperty("m3")]
+        [JsonPropertyName("m3")]
         public List<Bus> m3 { get; set; }
     }
     public class Bus
     {
-        [JsonProperty("line_name")]
+        [JsonPropertyName("line_name")]
         public string BusName { get; set; }
 
-        [JsonProperty("best_departure_estimate")]
+        [JsonPropertyName("best_departure_estimate")]
         public string EstimatedDepartureTime { get; set; }  
  
     }

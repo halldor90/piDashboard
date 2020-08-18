@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
+﻿using DayDash.Models;
 using Microsoft.AspNetCore.Mvc;
-using DayDash.Models;
+using System.Diagnostics;
 
 namespace DayDash.Controllers
 {

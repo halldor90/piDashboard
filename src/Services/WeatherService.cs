@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using DayDash.Models;
 using Microsoft.Extensions.Options;
 using System.Net.Http;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace DayDash.Services
 {
@@ -38,7 +38,7 @@ namespace DayDash.Services
             var response = await client.GetAsync(weatherUrl);
 
             var responseBody = response.Content.ReadAsStringAsync().Result;
-            weatherForecast = JsonConvert.DeserializeObject<WeatherForecast>(responseBody);
+            weatherForecast = JsonSerializer.Deserialize<WeatherForecast>(responseBody);
 
             return weatherForecast;
         }

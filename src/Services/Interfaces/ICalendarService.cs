@@ -1,6 +1,6 @@
+using DayDash.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DayDash.Models;
 
 namespace DayDash.Services
 {
