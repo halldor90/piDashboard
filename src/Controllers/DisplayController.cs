@@ -24,14 +24,14 @@ namespace DayDash.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var events = await _calendarService.GetCalendarItemsAsync();
-            var forecast = await _weatherService.GetForecastAsync(_appSettings);
-            var buses = await _busService.GetBusScheduleAsync(_appSettings);
+            var events = _calendarService.GetCalendarItemsAsync();
+            var forecast = _weatherService.GetForecastAsync(_appSettings);
+            var buses = _busService.GetBusScheduleAsync(_appSettings);
 
             dynamic model = new ExpandoObject();
-            model.Events = events;
-            model.Forecast = forecast;
-            model.Buses = buses;
+            model.Events = await events;
+            model.Forecast = await forecast;
+            model.Buses = await buses; 
 
             return View(model);
         }
