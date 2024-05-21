@@ -1,5 +1,7 @@
 # DayDashboard
 
+**ARCHIVED**
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
@@ -16,9 +18,7 @@
 
 [![Product Name Screen Shot](src/wwwroot/images/DayDashboard.png)](https://github.com/halldorstefans/DayDashboard)
 
-Web application to display upcoming calendar events, bus schedule and weather forecast
-
-[Blog post about the process](https://www.halldorstefans.com/personal-dashboard-showing-calendar-events-weather-forecast-using-net-core/)
+Web application to display upcoming calendar events, bus schedules and weather forecast
 
 ### Built With
 
@@ -28,7 +28,7 @@ Web application to display upcoming calendar events, bus schedule and weather fo
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Installation
 
@@ -42,7 +42,7 @@ To get a local copy up and running follow these simple example steps.
 
 3. Get a free API Key at [OpenWeather API](https://openweathermap.org/)
 
-4. Get a free API Key and Id at [Transport API](https://developer.transportapi.com/)
+4. Get a free API Key and ID at [Transport API](https://developer.transportapi.com/)
 
 5. [Find ATCO code for your bus stop](https://developer.transportapi.com/docs?raml=https://transportapi.com/v3/raml/transportapi.raml##bus_information)
 
