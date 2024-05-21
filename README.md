@@ -1,6 +1,6 @@
 # DayDashboard
 
-**ARCHIVED**
+--- **ARCHIVED** ---
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
